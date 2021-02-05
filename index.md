@@ -1,37 +1,56 @@
-## Welcome to GitHub Pages
+---
+title: failchat - мультичат для стримеров
+---
 
-You can use the [editor on GitHub](https://github.com/onoderis/failchat/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Ключевые особенности чата
+- Поддерживаемые источники:
+  - Twitch
+  - Youtube
+  - Goodgame
+  - Sc2tv
+- Исходный код чата полностью открыт. Чат был и будет бесплатным
+- Чат кроссплатформенный, но для Windows есть дополнительные фичи
+- Чат можно захватить в OBS через Browser source
+- Чат работает в режиме только чтения и не позволяет отправлять сообщения
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Скриншоты
+[![Окно настроек](https://i.imgur.com/YeFyy8zm.png)](https://i.imgur.com/YeFyy8z.png)
 
-### Markdown
+[![Скин old_sc2tv](https://i.imgur.com/ByJ29Tsm.png)](https://i.imgur.com/ByJ29Ts.png)
+[![Скин funstream](https://i.imgur.com/5Xh1CPkm.png)](https://i.imgur.com/5Xh1CPk.png)
+[![Скин glass](https://i.imgur.com/edXv0oNm.png)](https://i.imgur.com/edXv0oN.png)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+# Возможности чата
+- Отображение количества зрителей
+- Смайлы
+  - смайлы канала, BTTV и FrankerFaceZ смайлы на твитче
+  - смайлы каналов на goodgmae
+  - :gg-\*: :tw-\*: смайлы на sc2tv
+- Подсветка сообщений стримеру
+- Отображение цвета никнейма
+- Отображение иконок пользователя
+- Режим кликов мыши сквозь окно чата (доступно только на Windows)
+- Режим поверх всех окон
+- Режим окна без рамок
+- Возможность скрыть сообщения после настраиваемого промежутка времени
+- Отображение картинок и гифок в чате по ссылке
+- Подсветка сообщений за поинты канала на Twitch  
+- Кастомизация:
+  - Включить/выключить иконки, цвет ника, статусные сообщения
+  - Zoom
+  - Цвет фона
+  - Шаблон для удалённых сообщений
+  - Прозрачность окна чата
+  - Возможность добавлять свои смайлы
+- Сообщение удаляется в failchat'е если оно было удалено в первоисточнике
+- Возможность удалить сообщение только в failchat'е, но не в первоисточнике
+- Игнор лист
+- Возможность очистить все сообщения, а так же временно показать скрытые сообщения
+- Разделённая кастомизация для основного окна чата и для OBS Browser'а
 
-# Header 1
-## Header 2
-### Header 3
+# Другое
+- Доступно 3 скина
+- Возможна кастомизация скина через html/css/javascript
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/onoderis/failchat/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Проблемы или пожелания? Создайте issue на github или напишите в дискорд ![AYAYA](AYAYA.png)
