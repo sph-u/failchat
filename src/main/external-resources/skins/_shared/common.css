@@ -173,6 +173,7 @@ img.emoticon-raster {
 img.emoticon-vector {
     width: 30px;
     height: 30px;
+    margin: 0 3px;
 }
 
 .image-wrapper {
