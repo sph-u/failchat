@@ -114,6 +114,9 @@ function initializeFailchat() {
     socket.maxReconnectInterval = 5000;
 
     socket.onopen = function() {
+        if (failchat.demoMode) {
+            return;
+        }
         const connectedMessage = {id: nextSystemMessageId(), "origin": "failchat", "status": "connected", "timestamp": Date.now()};
         appendStatusMessage(connectedMessage);
 
@@ -123,12 +126,18 @@ function initializeFailchat() {
     };
 
     socket.onclose = function() {
+        if (failchat.demoMode) {
+            return;
+        }
         const disconnectedMessage = {id: nextSystemMessageId(), origin: "failchat", status: "disconnected", timestamp: Date.now()};
         appendStatusMessage(disconnectedMessage);
         originsStatus.reset()
     };
 
     socket.onmessage = function(event) {
+        if (failchat.demoMode) {
+            return;
+        }
         handleMessage(JSON.parse(event.data));
     };
 
