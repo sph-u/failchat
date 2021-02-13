@@ -3,7 +3,7 @@
 
     <groupId>com.github.onoderis</groupId>
     <artifactId>failchat</artifactId>
-    <version>2.7.1-SNAPSHOT</version>
+    <version>2.7.1</version>
     <packaging>jar</packaging>
 
     <name>failchat</name>
@@ -44,7 +44,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/onoderis/failchat.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v2.7.1</tag>
     </scm>
 
     <repositories>
