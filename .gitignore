@@ -1,5 +1,4 @@
 target
-src/main/resources/config/youtube/*
 src/main/resources/config/private.properties
 
 #font is downloaded on generate-resources phase
