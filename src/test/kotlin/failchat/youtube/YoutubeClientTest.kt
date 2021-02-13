@@ -17,8 +17,8 @@ class YoutubeClientTest {
     )
 
     @Test
-    fun getViewersCount() = runBlocking<Unit> {
-        val videoId = "HsGYQKQxPBs"
+    fun getViewersCountTest() = runBlocking<Unit> {
+        val videoId = "5qap5aO4i9A"
         val innertubeApiKey = client.getNewLiveChatSessionData(videoId).innertubeApiKey
 
         val count = client.getViewersCount(videoId, innertubeApiKey)

@@ -5,12 +5,12 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory
 import com.fasterxml.jackson.databind.node.ObjectNode
 
 data class LiveChatRequest(
-        val hidden: Boolean = false,
-        val context: Context
+        val context: Context = Context(),
+        val continuation: String
 ) {
     data class Context(
             val client: Client = Client(),
-            val request: Request,
+            val request: Request = Request(),
             val user: ObjectNode = JsonNodeFactory.instance.objectNode(),
             val clientScreenNonce: String = "MC4xNzQ1MzczNjgyNTc0MTI1"
     )
@@ -34,7 +34,6 @@ data class LiveChatRequest(
     )
 
     data class Request(
-            val sessionId: String,
             val internalExperimentFlags: ArrayNode = JsonNodeFactory.instance.arrayNode(),
             val consistencyTokenJars: ArrayNode = JsonNodeFactory.instance.arrayNode()
     )

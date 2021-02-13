@@ -1,6 +1,5 @@
 package failchat.youtube
 
-import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.ktor.client.HttpClient
@@ -58,65 +57,29 @@ class YoutubeClient(
 
         val pageHtml = response.content.toByteArray().toString(Charsets.UTF_8)
 
-        val innertubeApiKey = youtubeHtmlParser.extractInnertubeApiKey(pageHtml)
-        val sessionId = youtubeHtmlParser.extractSessionId(pageHtml)
+        val youtubeConfig = youtubeHtmlParser.parseYoutubeConfig(pageHtml)
+        val innertubeApiKey = youtubeHtmlParser.extractInnertubeApiKey(youtubeConfig)
 
         val ytInitialData = youtubeHtmlParser.parseInitialData(pageHtml)
-        val initialContinuation = extractInitialContinuation(ytInitialData)
-        val channelName = extractChannelName(ytInitialData)
+        val initialContinuation = youtubeHtmlParser.extractInitialContinuation(ytInitialData)
+        val channelName = youtubeHtmlParser.extractChannelName(ytInitialData)
 
         return LiveChatRequestParameters(
                 videoId = videoId,
                 channelName = channelName,
                 innertubeApiKey = innertubeApiKey,
-                sessionId = sessionId,
                 nextContinuation = initialContinuation
         )
     }
 
-    private fun extractInitialContinuation(ytInitialData: JsonNode): String {
-        val continuation = ytInitialData.get("contents")
-                ?.get("liveChatRenderer")
-                ?.get("continuations")
-                ?.get(0)
-
-        val continuationData = continuation?.get("invalidationContinuationData")
-                ?: continuation?.get("timedContinuationData")
-
-        return continuationData?.get("continuation")
-                ?.textValue()
-                ?: throw YoutubeClientException("No continuation in youtube initial data")
-    }
-    
-    private fun extractChannelName(ytInitialData: JsonNode): String {
-        return ytInitialData
-                .get("contents")
-                .get("liveChatRenderer")
-                .get("participantsList")
-                .get("liveChatParticipantsListRenderer")
-                .get("participants")
-                .first()
-                .get("liveChatParticipantRenderer")
-                .get("authorName")
-                .get("simpleText")
-                .textValue()
-    }
-
     suspend fun getLiveChatResponse(parameters: LiveChatRequestParameters): LiveChatResponse {
-        val requestBodyDto = LiveChatRequest(
-                context = LiveChatRequest.Context(
-                        request = LiveChatRequest.Request(sessionId = parameters.sessionId)
-                )
-        )
+        val requestBodyDto = LiveChatRequest(continuation = parameters.nextContinuation)
         val requestBody = objectMapper.writeValueAsString(requestBodyDto)
 
         val response = httpClient.request<HttpResponse> {
             method = HttpMethod.Post
             url {
                 takeFrom(liveChatUrl).parameters.apply {
-                    append("commandMetadata", "[object Object]")
-                    append("continuation", parameters.nextContinuation)
-                    append("pbj", "1")
                     append("key", parameters.innertubeApiKey)
                 }
             }
