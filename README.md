@@ -1,29 +1,13 @@
-### Description
-Cross-platform chat message aggregator for twitch, youtube, goodgame, peka2tv 
-
-### Features
-* Emoteicons (including BetterTTV, FrankerFaceZ)
-* Message highlight, nickname color, user badges
-* Viewers counter
-* Available 3 skins for now
-* Click through the window mode(windows only), window on top mode, borderless window mode
-* Ability to hide a message after configurable amount of time
-* Ability to display images by link
-* Custom emoticons
-* Customization
-    * Turn on/off badges, nickname color, status messages
-    * Zoom
-    * Background color
-    * Template for deleted message
-    * Window transparency
-* Ignore list, moderation
-* Ability to clear chat and to temporarily show hidden messages 
-* Could be captured by OBS Browser, CLR Browser or the same plugins
-* Separate configuration for the failchat window and for the OBS Browser(or the same plugins)
-* Skin customization via html/css/js
+Failchat is a desktop application for streamers. It aggregates chat messages from multiple sources, shows you viewer count, etc.   
+Detailed description could be found [on the site](https://onoderis.github.io/failchat/).
 
 ### Requirements
-Java 8 (recommended update 1.8.0_202)
+Java 11 with bundled JavaFX. [Liberica JDK](https://bell-sw.com/pages/downloads/#/java-11-lts) is recommended.
 
-### Screenshots
-[Imgur album](https://imgur.com/a/AVYzrmo)
+### Before you build
+Create file `src/main/resources/config/private.properties` with the following properties and replace the values:
+```properties
+twitch.bot-name = BOT_NAME
+twitch.bot-password = BOT_PASSWORD (has prefix "oauth:")
+twitch.api-token = API_TOKEN
+```
