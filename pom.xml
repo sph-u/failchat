@@ -384,6 +384,7 @@
                                         <exclude>failchat.bat</exclude>
                                         <exclude>failchat.sh</exclude>
                                         <exclude>skins/_shared/example-messages.js</exclude>
+                                        <exclude>skins/_shared/demo-messages.js</exclude>
                                     </excludes>
                                 </resource>
                                 <resource>
